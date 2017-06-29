@@ -1,5 +1,5 @@
 # Demo page for serverless-authentication
 
-http://laardee.github.io/serverless-authentication-gh-pages/
+https://sethpt.github.io/calendar-auth-service-sample-gui
 
 simple authentication demo
