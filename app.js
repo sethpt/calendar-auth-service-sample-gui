@@ -1,35 +1,35 @@
 'use strict';
 
-var authenticationEndpoint = 'https://k4dd5k0t2m.execute-api.us-west-2.amazonaws.com/dev';
-var contentApiEndpoint = 'https://lpi5i2ybzg.execute-api.us-west-2.amazonaws.com/dev';
-function testToken() {
-  var authorizationToken = localStorage.getItem('authorization_token');
-  if (authorizationToken) {
-    $('#test-result').html('Loading...');
-
-    // set token to Authorization header
-    $.ajax({
-        method: 'GET',
-        url: contentApiEndpoint + '/test-token',
-        headers: {
-          Authorization: authorizationToken
-        }
-      })
-      .done(function (data) {
-        $('#test-result').html(JSON.stringify(data));
-      })
-      .fail(function (error) {
-        if($('#auto-refresh').prop('checked')) {
-          $('#test-result').html('Refreshing token...');
-          refreshToken();
-        } else {
-          $('#test-result').html('Unauthorized');
-        }
-      });
-  } else {
-    $('#test-result').html('Unauthorized');
-  }
-}
+var authenticationEndpoint = 'https://56vlwj2ay5.execute-api.us-east-1.amazonaws.com/prod';
+// var contentApiEndpoint = 'https://lpi5i2ybzg.execute-api.us-west-2.amazonaws.com/dev';
+// function testToken() {
+//   var authorizationToken = localStorage.getItem('authorization_token');
+//   if (authorizationToken) {
+//     $('#test-result').html('Loading...');
+//
+//     // set token to Authorization header
+//     $.ajax({
+//         method: 'GET',
+//         url: contentApiEndpoint + '/test-token',
+//         headers: {
+//           Authorization: authorizationToken
+//         }
+//       })
+//       .done(function (data) {
+//         $('#test-result').html(JSON.stringify(data));
+//       })
+//       .fail(function (error) {
+//         if($('#auto-refresh').prop('checked')) {
+//           $('#test-result').html('Refreshing token...');
+//           refreshToken();
+//         } else {
+//           $('#test-result').html('Unauthorized');
+//         }
+//       });
+//   } else {
+//     $('#test-result').html('Unauthorized');
+//   }
+// }
 
 function refreshToken() {
   $('#test-result').html('Loading...');
@@ -104,7 +104,7 @@ $(function () {
     var aToken = query.authorization_token || '';
     var rToken = query.refresh_token || '';
     saveResponse(aToken, rToken);
-    window.history.replaceState({authorization_token: ''}, 'serverless-authentication-gh-pages', '/serverless-authentication-gh-pages');
+    window.history.replaceState({authorization_token: ''}, 'calendar-auth-service-sample-gui', '/calendar-auth-service-sample-gui');
 
     // trigger test token
     testToken();
